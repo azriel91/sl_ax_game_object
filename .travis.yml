@@ -1,0 +1,37 @@
+sudo: required
+
+language: cpp
+compiler:
+- gcc
+- clang
+
+before_install:
+- git checkout $TRAVIS_BRANCH
+
+- if [ $(bii-support/travis/git/is_last_commit_travis.sh) = "true" ] ; then exit 0 ; fi
+- bii-support/travis/git/configure.sh
+
+install:
+- bii-support/travis/install/all-headless.sh
+
+- export TRAVIS_CXX=$CXX
+
+script:
+- bii-support/linux/build/default.sh
+
+after_success:
+- bii-support/travis/publish/biicode.sh
+
+env:
+  global:
+  - USER_EMAIL=azriel91@gmail.com
+  - USER_NAME="azriel"
+  - BLOCK_NAME=sl_ax_game
+  - BII_USER=azriel
+  # Secure variables:
+  # - BII_PASSWORD
+  # - GITHUB_TOKEN
+  - secure: "pbW4srOzgvCrKAH8LJhsSbXvZCdOdlyRFbK32kdWYFPzB2yuznJQSnxURLvUi9z4NOpwNu5D/x4uXEWwlqzMBKaGK5WmO3m0PGV0airE8BF9j4BAGhLsGfxGPkYqfbvMNJtqLfxCS9YpAn+vha1oP3B58iJD437mdtflq9F1ptIrf+gnD0HUbxm3Cw5zDGxY2yBIPhUUut1QmH0TD9oRXQZPZXO6/ycpxNu52CnD5UOCDir/n2ixxKxT8VkG0oW3z3W0v2Omg7u0KG2C1rTp2Z7EllqV2kPDXDqu1hxmlq4io0p6GPvwEY/bqmN21AKc20xBJpnfrfuWim0+LuxXD/lIC63Da7YtcpSLxBWv10IIz+fcRMUhgdlL+/jlHWsWr3jubHzS396RjucFOP/vd4hA7+bkXWurKOnxAZbypHOYhjxv+57F7F7EONcaP+zQ49i8Ybhp8dhEmxXVo+DItwtDwbAJ1bS0jvQWdKkLRtCRuPnOyhRmq/4WtYu6uVlTnkYg1Cc2rtZuAwbV7s5UcJuRa5NOO9jUdvq4/tSTuzc6TsC0XhjJuoygzrwiXol1srfUKj/6I3losivPv99YzsoxG2J52GN3ZaEKrw2+jNSmucREqDM148MmP/o81yqr0PMp0ot4txNjYiW7xvon49EgJcKGM5xz/V7VDtMaSy0="
+  matrix:
+  - BUILD_SHARED_LIBS=OFF
+  - BUILD_SHARED_LIBS=ON

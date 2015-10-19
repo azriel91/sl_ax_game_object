@@ -5,10 +5,12 @@ include(biicode/cmake/tools)
 
 # Bii variables
 set(BII_LIB_DEPS ${BII_LIB_DEPS} azriel_cppmicroservices)
-set(BII_LIB_SRC Object.cpp)
-set(BII_test_main_SRC test/main.cpp)
-
+set(BII_LIB_SRC Object.cpp
+                impl/Activator.cpp)
 usFunctionGenerateModuleInit(BII_LIB_SRC MODULE_NAME ${BII_BLOCK_NAME})
+
+set(BII_test_main_SRC test/main.cpp)
+usFunctionGenerateModuleInit(BII_test_main_SRC MODULE_NAME main)
 
 # Actually create targets: executables and libraries.
 ADD_BII_TARGETS()

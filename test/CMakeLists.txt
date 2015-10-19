@@ -15,6 +15,8 @@ add_custom_target(TestConfigTarget DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/TestConfi
 add_dependencies(${BII_test_main_TARGET} TestConfigTarget)
 
 target_include_directories(${BII_test_main_TARGET} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_compile_definitions(${BII_test_main_TARGET} PUBLIC US_MODULE_NAME=main
+                                                   PRIVATE US_STATIC_MODULE)
 
 # Run the test
 enable_testing()

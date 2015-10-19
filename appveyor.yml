@@ -9,7 +9,7 @@ test_script:
 - cmd: bin\%BII_USER%_%BLOCK_NAME%_test_main.exe
 
 environment:
-  BLOCK_NAME: sl_ax_game
+  BLOCK_NAME: sl_ax_game_object
   BII_USER: azriel
 
   matrix:

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/azriel91/sl_ax_game_object.svg?branch=master)](https://travis-ci.org/azriel91/sl_ax_game_object) [![Build status](https://ci.appveyor.com/api/projects/status/8inh3fy2via457of/branch/master?svg=true)](https://ci.appveyor.com/project/azriel91/sl-ax-game-object/branch/master) [![Build Status](https://webapi.biicode.com/v1/badges/azriel/azriel/sl_ax_game_object/master)](https://www.biicode.com/azriel/sl_ax_game_object)
+
 ## sl\_ax\_game\_object
 
 Contains the headers for game objects.
